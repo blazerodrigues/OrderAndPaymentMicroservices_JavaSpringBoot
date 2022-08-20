@@ -1,0 +1,8 @@
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: '*'
+
+
+spring:
+  application:
+    name: HYSTRIX-DASHBOARD

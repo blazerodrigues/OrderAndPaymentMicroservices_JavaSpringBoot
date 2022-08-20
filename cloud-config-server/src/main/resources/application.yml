@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud: #this property will allow the config server to get the GITHUB application.yml file
+    config:
+      server:
+        git:
+          uri: https://github.com/blazerodrigues/cloud-config-server
+
+server:
+  port: 9196
+
+#Congfiguration for making this a EUREKA CLIENT
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost

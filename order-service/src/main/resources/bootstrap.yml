@@ -1,0 +1,7 @@
+#bootstrap.yml file LOADS BEFORE application.yml file. That's why we are defining CONFIG SERVER URL here
+
+spring:
+  cloud: #this property will be used to connect to the CONFIG-SERVER (localhost:9196) and get application.yml file from github
+    config:
+      uri:
+        - http://localhost:9196

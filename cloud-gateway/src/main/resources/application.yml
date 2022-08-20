@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud: # spring.cloud.gateway.routes is used to define the ROUTES of API GATEWAY
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://ORDER-SERVICE #lb stands for load balancer
+          predicates:
+            - Path=/order/** #any request with /order/** will be redirected to ORDER-SERVICE
+          filters: #below filter configuration is in case of failure fallback (refer HYSTRIX)
+            - name: CircuitBreaker
+              args:
+                name: order-service
+                fallbackuri: forward:/orderFallback #in case of failure fallback, redirect to /orderFallback
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: payment-service
+                fallbackuri: forward:/paymentFallback
+
+server:
+  port: 8989
+
+#Configuration for HYSTRIX ENDPOINT
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream #Hystrix Stream using the Hystrix dependency added in POM #This will evaluate the fallback stream
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #Timeout error AFTER 5000ms #If request does not return anything for 5000ms then redirect to fallback
