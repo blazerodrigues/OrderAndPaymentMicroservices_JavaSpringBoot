@@ -29,9 +29,9 @@ Implementing centralized logging using ELK stack (Elasticsearch-Logstash-Kibana)
 
 Distributed Tracing using Sleuth and Zipkin: <br/>
 Notice that the TRACE ID ba0a1614d5ae7933 is same in ORDER-SERVICE and PAYMENT-SERVICE (Order service calls Payment service)<br/>
-ORDER-SERVICE LOGS<br/>
+ORDER-SERVICE LOGS...<br/>
 2022-08-21 00:34:45.416  INFO [ORDER-SERVICE,ba0a1614d5ae7933,ba0a1614d5ae7933] 23580 --- [nio-9192-exec-2] com.blaze.os.api.service.OrderService    : OrderService saveOrder REQUEST: {"order":{"id":0,"name":"Mobile","qty":1,"price":8000.0},"payment":{"paymentId":0,"paymentStatus":null,"transactionId":null,"orderId":0,"amount":0.0}} <br/>
 2022-08-21 00:34:45.664  INFO [ORDER-SERVICE,ba0a1614d5ae7933,ba0a1614d5ae7933] 23580 --- [nio-9192-exec-2] com.blaze.os.api.service.OrderService    : OrderService saveOrder (PaymentService call) RESPONSE: {"paymentId":3,"paymentStatus":"success","transactionId":"a1dfb00a-73a3-4de2-afb2-582e5b1bedbc","orderId":1,"amount":8000.0} <br/>
-PAYMENT-SERVICE LOGS <br/>
+PAYMENT-SERVICE LOGS... <br/>
 2022-08-21 00:34:45.650  INFO [PAYMENT-SERVICE,ba0a1614d5ae7933,f90362eb4448f801] 2004 --- [nio-9191-exec-5] com.blaze.ps.api.service.PaymentService  : PaymentService doPayment PAYMENT: {"paymentId":0,"paymentStatus":"success","transactionId":"a1dfb00a-73a3-4de2-afb2-582e5b1bedbc","orderId":1,"amount":8000.0} <br/>
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/96373227/185762736-0f4e996c-c733-4dc2-803e-4cb5f6255227.png"> <br/>
