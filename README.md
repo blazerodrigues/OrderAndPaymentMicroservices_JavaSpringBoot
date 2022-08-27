@@ -1,6 +1,4 @@
-# OrderAndPaymentMicroservices_SpringBoot
-
-Created two microservices using Java Spring Boot - Order service and Payment Service <br/> 
+# Java Spring Boot Microservices (Order and Payment Service)
 
 Order Service:<br/>
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/96373227/185761628-d77d44f8-97d8-4023-9e98-bd1a3101e1f1.png">
